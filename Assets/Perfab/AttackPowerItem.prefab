@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2574968370430257506
+--- !u!1 &363485738523119015
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8875399991349839595}
-  - component: {fileID: 7608751416143123696}
-  - component: {fileID: 4211648209082896576}
-  - component: {fileID: 698210841573384029}
-  - component: {fileID: 733412947105388389}
-  - component: {fileID: 290092559422852687}
+  - component: {fileID: 8543341921455328150}
+  - component: {fileID: 6393491482611788388}
+  - component: {fileID: 7028119139889533507}
+  - component: {fileID: 971417781852273682}
+  - component: {fileID: 4741109434146238681}
+  - component: {fileID: 8899015870292851033}
   m_Layer: 6
-  m_Name: Ball
+  m_Name: AttackPowerItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8875399991349839595
+--- !u!4 &8543341921455328150
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574968370430257506}
+  m_GameObject: {fileID: 363485738523119015}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.857, y: 0.871, z: -2.02975}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalPosition: {x: -4.98193, y: 0.376, z: 2.12341}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7608751416143123696
+--- !u!33 &6393491482611788388
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574968370430257506}
+  m_GameObject: {fileID: 363485738523119015}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4211648209082896576
+--- !u!23 &7028119139889533507
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574968370430257506}
+  m_GameObject: {fileID: 363485738523119015}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9ece61b88ded3414c816ceb2f6cff3ae, type: 2}
+  - {fileID: 2100000, guid: 538d70adbcdf12940b8f4b748ee6962d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,13 +93,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &698210841573384029
+--- !u!135 &971417781852273682
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574968370430257506}
+  m_GameObject: {fileID: 363485738523119015}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -108,19 +108,19 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &733412947105388389
+--- !u!54 &4741109434146238681
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574968370430257506}
+  m_GameObject: {fileID: 363485738523119015}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -136,25 +136,22 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!114 &290092559422852687
+  m_CollisionDetection: 0
+--- !u!114 &8899015870292851033
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2574968370430257506}
+  m_GameObject: {fileID: 363485738523119015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405e44097685eb64195ec762e4b15eee, type: 3}
+  m_Script: {fileID: 11500000, guid: 77399bc0c7a00c04187d376a0f603e4e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BallProjectile
-  lifeTime: 5
-  ballRenderer: {fileID: 4211648209082896576}
-  normalMaterial: {fileID: 2100000, guid: 00b9d5f980e92d449953f7ba183c01d0, type: 2}
-  autoFireMaterial: {fileID: 2100000, guid: 9ece61b88ded3414c816ceb2f6cff3ae, type: 2}
-  hitEffectPrefab: {fileID: 6049831772551230842, guid: 08ef9140a9bcfe540816d1d9b9fe820b, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::AttackPowerItem
+  increaseAmount: 10
+  rotateSpeed: 90

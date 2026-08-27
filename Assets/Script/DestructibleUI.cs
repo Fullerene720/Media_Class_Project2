@@ -8,12 +8,8 @@ public class DestructibleUI : MonoBehaviour
     [SerializeField] private Slider hpSlider;
     [SerializeField] private TMP_Text hpText;
 
-    [Header("Camera")]
-    [SerializeField] private Camera playerCamera;
+    private Camera playerCamera;
 
-    /// <summary>
-    /// HP UIを初期化する。
-    /// </summary>
     public void Initialize(int maxHp)
     {
         if (hpSlider != null)
@@ -28,18 +24,13 @@ public class DestructibleUI : MonoBehaviour
             hpText.text = $"{maxHp} / {maxHp}";
         }
 
-        if (playerCamera == null)
-        {
-            playerCamera = Camera.main;
-        }
+        // シーン上のMainCameraを自動取得
+        playerCamera = Camera.main;
 
         // 最初は非表示
         gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// 現在HPに合わせてUIを更新する。
-    /// </summary>
     public void UpdateHp(int currentHp, int maxHp)
     {
         gameObject.SetActive(true);
@@ -57,12 +48,17 @@ public class DestructibleUI : MonoBehaviour
 
     private void LateUpdate()
     {
+        // 何らかの理由で取得できていなければ再取得
         if (playerCamera == null)
         {
-            return;
+            playerCamera = Camera.main;
+
+            if (playerCamera == null)
+            {
+                return;
+            }
         }
 
-        // カメラと同じ方向を向かせる
         transform.rotation = Quaternion.LookRotation(
             playerCamera.transform.forward,
             playerCamera.transform.up

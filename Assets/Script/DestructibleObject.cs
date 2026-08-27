@@ -11,6 +11,10 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     [Header("UI")]
     [SerializeField] private DestructibleUI destructibleUI;
 
+
+    [Tooltip("必要に応じて追加するアイテムのドロップ位置")]
+    [SerializeField] private Transform itemDropPoint;
+
     private int currentHp;
     private bool isDestroyed;
 
@@ -73,23 +77,39 @@ public class DestructibleObject : MonoBehaviour, IDamageable
 
         isDestroyed = true;
 
-        // 損害額をGameManagerへ加算
         if (DestructionGameManager.Instance != null)
         {
             DestructionGameManager.Instance.AddDamageCost(damageValue);
-        }
-        else
-        {
-            Debug.LogWarning(
-                "DestructionGameManagerがScene内に存在しません。"
+
+            DestructionGameManager.Instance.TryDropAttackPowerItem(
+                GetDropPosition()
             );
         }
 
-        Debug.Log(
-            $"{gameObject.name} を破壊しました。" +
-            $" 損害額: {damageValue}円"
-        );
-
         Destroy(gameObject);
+    }
+
+    private Vector3 GetDropPosition()
+    {
+        if (itemDropPoint != null)
+        {
+            return itemDropPoint.position;
+        }
+
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+
+        if (colliders.Length == 0)
+        {
+            return transform.position;
+        }
+
+        Bounds bounds = colliders[0].bounds;
+
+        for (int i = 1; i < colliders.Length; i++)
+        {
+            bounds.Encapsulate(colliders[i].bounds);
+        }
+
+        return bounds.center;
     }
 }
