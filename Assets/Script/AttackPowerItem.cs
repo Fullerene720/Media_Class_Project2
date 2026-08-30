@@ -8,17 +8,12 @@ public class AttackPowerItem : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(
-            Vector3.up,
-            rotateSpeed * Time.deltaTime,
-            Space.World
-        );
+        transform.Rotate(Vector3.up,rotateSpeed * Time.deltaTime,Space.World);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerAttack playerAttack =
-            other.GetComponentInParent<PlayerAttack>();
+        PlayerAttack playerAttack = other.GetComponentInParent<PlayerAttack>();
 
         if (playerAttack == null)
         {

@@ -10,7 +10,6 @@ public class DestructionGameManager : MonoBehaviour
     [SerializeField] private GameHUD gameHUD;
     [SerializeField] private PlayerAttack playerAttack;
 
-    // FirstPersonControllerをここに設定
     [SerializeField] private Behaviour playerController;
 
     [Header("Game Settings")]
@@ -52,9 +51,7 @@ public class DestructionGameManager : MonoBehaviour
 
             if (playerAttack != null)
             {
-                gameHUD.UpdateAttackPower(
-                    playerAttack.AttackPower
-                );
+                gameHUD.UpdateAttackPower(playerAttack.AttackPower );
             }
         }
 
@@ -68,9 +65,7 @@ public class DestructionGameManager : MonoBehaviour
         StartCoroutine(GameSequence());
     }
 
-    /// <summary>
-    /// ゲーム開始までのカウントダウン。
-    /// </summary>
+
     private IEnumerator GameSequence()
     {
         if (gameHUD != null)
@@ -103,7 +98,6 @@ public class DestructionGameManager : MonoBehaviour
         IsPlaying = true;
         SetPlayerControl(true);
 
-        // タイマーも同時に開始
         StartCoroutine(GameTimer());
 
         // START!は少しだけ残す
@@ -205,14 +199,9 @@ public class DestructionGameManager : MonoBehaviour
             return;
         }
 
-        Vector3 spawnPosition =
-            position + Vector3.up * 0.5f;
+        Vector3 spawnPosition = position + Vector3.up * 0.5f;
 
-        Instantiate(
-            attackPowerItemPrefab,
-            spawnPosition,
-            Quaternion.identity
-        );
+        Instantiate(attackPowerItemPrefab, spawnPosition, Quaternion.identity);
     }
 
     public void OnAutoFireUnlocked()

@@ -83,18 +83,13 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        if (ballPrefab == null ||
-            firePoint == null ||
-            playerCamera == null)
+        if (ballPrefab == null ||  firePoint == null || playerCamera == null)
         {
             return;
         }
 
         // カメラ中央からRayを飛ばす
-        Ray aimRay = new Ray(
-            playerCamera.transform.position,
-            playerCamera.transform.forward
-        );
+        Ray aimRay = new Ray( playerCamera.transform.position,  playerCamera.transform.forward );
 
         Vector3 targetPoint;
 
@@ -105,33 +100,22 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            // 何もなければ100m先を狙う
-            targetPoint =
-                playerCamera.transform.position +
-                playerCamera.transform.forward * 100f;
+            // 何もなければ前方を狙う
+            targetPoint = playerCamera.transform.position +  playerCamera.transform.forward * 100f;
         }
 
         // FirePointから照準位置への方向
-        Vector3 shootDirection =
-            (targetPoint - firePoint.position).normalized;
+        Vector3 shootDirection = (targetPoint - firePoint.position).normalized;
 
-        BallProjectile ball = Instantiate(
-            ballPrefab,
-            firePoint.position,
-            Quaternion.LookRotation(shootDirection)
-        );
+        BallProjectile ball = Instantiate( ballPrefab,  firePoint.position,   Quaternion.LookRotation(shootDirection) );
 
-        ball.Initialize(
-            attackPower,
-            autoFireUnlocked
-        );
+        ball.Initialize( attackPower, autoFireUnlocked  );
 
         Rigidbody rb = ball.GetComponent<Rigidbody>();
 
         if (rb != null)
         {
-            rb.linearVelocity =
-                shootDirection * projectileSpeed;
+            rb.linearVelocity =  shootDirection * projectileSpeed;
         }
     }
 
@@ -150,10 +134,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (DestructionGameManager.Instance != null)
         {
-            DestructionGameManager.Instance.OnAttackPowerIncreased(
-                amount,
-                attackPower
-            );
+            DestructionGameManager.Instance.OnAttackPowerIncreased( amount,  attackPower);
 
             // 初めて連射可能になった瞬間だけ通知
             if (!wasAutoFireUnlocked && autoFireUnlocked)

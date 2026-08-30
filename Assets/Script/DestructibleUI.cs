@@ -59,9 +59,6 @@ public class DestructibleUI : MonoBehaviour
             }
         }
 
-        transform.rotation = Quaternion.LookRotation(
-            playerCamera.transform.forward,
-            playerCamera.transform.up
-        );
+        transform.rotation = Quaternion.LookRotation( playerCamera.transform.forward, playerCamera.transform.up );
     }
 }

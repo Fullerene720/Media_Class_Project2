@@ -28,8 +28,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
 
         if (destructibleUI == null)
         {
-            destructibleUI =
-                GetComponentInChildren<DestructibleUI>(true);
+            destructibleUI = GetComponentInChildren<DestructibleUI>(true);
         }
 
         if (destructibleUI != null)
@@ -53,9 +52,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         currentHp -= damage;
         currentHp = Mathf.Max(currentHp, 0);
 
-        Debug.Log(
-            $"{gameObject.name} : {currentHp} / {maxHp}"
-        );
+        Debug.Log(  $"{gameObject.name} : {currentHp} / {maxHp}" );
 
         if (destructibleUI != null)
         {
@@ -81,9 +78,7 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         {
             DestructionGameManager.Instance.AddDamageCost(damageValue);
 
-            DestructionGameManager.Instance.TryDropAttackPowerItem(
-                GetDropPosition()
-            );
+            DestructionGameManager.Instance.TryDropAttackPowerItem(  GetDropPosition() );
         }
 
         Destroy(gameObject);

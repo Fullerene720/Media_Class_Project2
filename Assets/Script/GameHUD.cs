@@ -58,8 +58,7 @@ public class GameHUD : MonoBehaviour
             return;
         }
 
-        attackPowerText.text =
-            $"攻撃力：{attackPower}";
+        attackPowerText.text =$"攻撃力：{attackPower}";
     }
 
     public void ShowAttackPowerIncrease(int amount)
@@ -71,15 +70,10 @@ public class GameHUD : MonoBehaviour
 
         if (attackPowerMessageCoroutine != null)
         {
-            StopCoroutine(
-                attackPowerMessageCoroutine
-            );
+            StopCoroutine(attackPowerMessageCoroutine );
         }
 
-        attackPowerMessageCoroutine =
-            StartCoroutine(
-                ShowAttackPowerMessageCoroutine(amount)
-            );
+        attackPowerMessageCoroutine = StartCoroutine( ShowAttackPowerMessageCoroutine(amount) );
     }
 
     private IEnumerator ShowAttackPowerMessageCoroutine(
@@ -157,8 +151,7 @@ public class GameHUD : MonoBehaviour
 
         if (resultDamageCostText != null)
         {
-            resultDamageCostText.text =
-                $"最終損害賠償額\n¥{totalDamageCost:N0}";
+            resultDamageCostText.text =  $"最終損害賠償額\n¥{totalDamageCost:N0}";
         }
     }
 
